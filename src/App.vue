@@ -1,38 +1,19 @@
 <template>
   <div>
-    <input v-model="name">
+    <div class="ui menu">
+      <router-link to="/" class="item">Home</router-link>
+      <router-link to="/about" class="item">About</router-link>
+      <div class="right menu">
+        <router-link to="/signin" class="item">Sign In</router-link>
+      </div>
+    </div>
     <br>
-    <li><input type="checkbox" value="6" v-model="list"> 7 </li>
-    <li><input type="checkbox" value="7" v-model="list"> 8 </li>
-    <li><input type="checkbox" value="8" v-model="list"> 9 </li>
-    <br>
-    <hello :name="name" :list="list"></hello>
-    <br>
-    <button v-on:click="sayHello()">Say</button>
-    
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello.vue'
+export default{
 
-export default {
-  data () {
-    return {
-      name: '',
-      list: [
-        1, 2, 3, 4, 5
-      ]
-    }
-  },
-  components: {
-    Hello
-  },
-  methods: {
-    sayHello () {
-      window.alert('Hi, ' + this.name)
-    }
-  }
 }
 </script>
-
