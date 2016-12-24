@@ -8,18 +8,18 @@
                 <button class="ui blue button" :class="{'loading disabled': posting}">Post</button>
             </form>
         </div>
-        <div v-for="tweet in tweets" class="ui segment">
+        <div v-for="tweet in list" class="ui segment">
           <div class="ui feed">
             <div class="event">
               <div class="label">
-                <img class="titleImage" v-if="findUserPhoto(tweet.owner)" :src="findUserPhoto(tweet.owner)">
+                <img class="titleImage" v-if="tweet.user" :src="tweet.user.photo">
               </div>
               <div class="content">
                 <div class="date">
                   {{ tweet.timestamp | fromNow }}
                 </div>
                 <div class="summary">
-                  <a>{{ findUserName(tweet.owner) }}</a>
+                  <a v-if="tweet.user">{{ tweet.user.name }}</a>
                 </div>
                 <div class="extra text">
                   {{ tweet.content }}
@@ -46,7 +46,7 @@ export default {
     input: '',
     posting: false,
     tweets: [],
-    users: [],
+    users: {},
     checkUser: false
   }),
   created () {
@@ -54,9 +54,22 @@ export default {
       this.tweets = list
     })
     User.list((list) => {
-      this.users = list
+      this.users = list.reduce((p, v) => {
+        p[v.$id] = v
+        return p
+      }, {})
     })
     this.checkUser = Auth.getCurrentUser()
+  },
+  computed: {
+    list () {
+      return this.tweets.map((tweet) => {
+        return {
+          ...tweet,
+          user: this.users[tweet.owner]
+        }
+      })
+    }
   },
   methods: {
     post () {
@@ -67,14 +80,6 @@ export default {
           this.input = ''
           this.posting = false
         })
-    },
-    findUserName (id) {
-      const x = this.users.find((it) => it.$id === id)
-      return x ? x.name : ''
-    },
-    findUserPhoto (id) {
-      const x = this.users.find((it) => it.$id === id)
-      return x ? x.photo : ''
     }
   }
 }
