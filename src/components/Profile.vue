@@ -19,7 +19,8 @@ export default {
   data: () => ({
     profile: {
       name: '',
-      description: ''
+      description: '',
+      photo: ''
     }
   }),
   created () {
