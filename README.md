@@ -1,4 +1,4 @@
-# Test project Vue.js (Vue.js 2 for Real World)
+# vuejs-project
 
 > A Vue.js project
 
