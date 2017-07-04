@@ -3,7 +3,7 @@
         <div v-if="checkUser" class="ui segment">
             <form @submit.prevent="post" class="ui form">
                 <div class="field">
-                    <textarea v-model="input">
+                    <textarea v-model="input"/>
                 </div>
                 <button class="ui blue button" :class="{'loading disabled': posting}">Post</button>
             </form>
@@ -12,7 +12,7 @@
           <div class="ui feed">
             <div class="event">
               <div class="label">
-                <img class="titleImage" v-if="tweet.user" :src="tweet.user.photo">
+                <img class="titleImage" v-if="tweet.user" :src="tweet.user.photo"/>
               </div>
               <div class="content">
                 <div class="date">

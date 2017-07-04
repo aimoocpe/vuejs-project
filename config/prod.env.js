@@ -1,10 +1,11 @@
 module.exports = {
   NODE_ENV: '"production"',
   FIREBASE: `{
-    apiKey: 'AIzaSyDfa-W42WwKLLAZtDBtE3BxsLaca88uQVA',
-    authDomain: 'vuejs-project.firebaseapp.com',
-    databaseURL: 'https://vuejs-project.firebaseio.com',
-    storageBucket: 'vuejs-project.appspot.com',
-    messagingSenderId: '880443594790'
+    apiKey: 'AIzaSyAIZBYy_hcFUudp6Kl_w4S5vDpIf-uHdPc',
+    authDomain: 'vue-post-example.firebaseapp.com',
+    databaseURL: 'https://vue-post-example.firebaseio.com',
+    projectId: 'vue-post-example',
+    storageBucket: 'vue-post-example.appspot.com',
+    messagingSenderId: '872672104579'
   }`
 }

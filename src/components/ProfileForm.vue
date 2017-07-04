@@ -2,19 +2,19 @@
     <form class="ui form" @submit.prevent="save">
         <div class="field">
             <label>Photo</label>
-            <img v-if="photo" :src="photo" class="ui small circular image">
+            <img v-if="photo" :src="photo" class="ui small circular image"/>
             <div class="ui green button" @click="openUpload">Upload Photo</div>
         </div>
         <div class="field">
-            <label>Name</lable>
-            <input v-model="name">
+            <label>Name</label>
+            <input v-model="name"/>
         </div>
         <div class="field">
-            <label>Description</lable>
-            <input v-model="description">
+            <label>Description</label>
+            <input v-model="description"/>
         </div>
         <button class="ui submit blue button">Save</button>
-        <div class="ui red button" @click="$emit('cancel')">Cancel</button>
+        <button class="ui red button" @click="$emit('cancel')">Cancel</button>
         <upload-modal ref="upload" @success="uploaded"></upload-modal>
     </form>
 </template>
